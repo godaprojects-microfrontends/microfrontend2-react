@@ -2,24 +2,23 @@ import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { createBrowserHistory } from 'history';
-import logo from './logo.svg';
-import './App.css';
 import Microfrontend2 from './Microfrontend2'
-
-const aSampleClass = styled.div`
-  background-color: antiquewhite;
-`;
 
 const defaultHistory = createBrowserHistory();
 
+export default class App extends React.Component {
+    
+  constructor(props) {
+    super(props)
+    this.state = { results: props } ;
+  }
 
-const App = ({ history = defaultHistory }) => (
-  <Router history={history}>
-    <aSampleClass>
-      <Route exact path="/microfrontend2" component={Microfrontend2} />
-    </aSampleClass>
-  </Router>
-)
+  render(){
+    return (
+      <Microfrontend2 data={this.props}/>
+    )
+  }
+}
 
 
-export default App;
+
